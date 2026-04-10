@@ -1,0 +1,28 @@
+name: GitHub Actions Demo
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  explore-github-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Display trigger information
+        run: |
+          echo "The job was automatically triggered by a ${{ github.event_name }} event."
+          echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+          echo "Branch: ${{ github.ref }}"
+          echo "Repository: ${{ github.repository }}"
+
+      - name: List repository files
+        run: ls -la
+
+      - name: Job status
+        run: echo "This job's status is ${{ job.status }}."
